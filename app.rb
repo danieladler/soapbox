@@ -2,6 +2,11 @@ require_relative 'bubble'
 
 all_bubbles = [] #is the very top of the app the best place for this?
 
+puts "\nWelcome to Soapbox!"
+puts "~ Bubble: |ˈbəbəl | noun , a social media post on Soapbox"
+puts "~ Squeak: | skwēk | verb , to create a Bubble on Soapbox\n\n"
+
+
 # 1. Ask for a username
 puts "Please enter username"
 input = gets.chomp
@@ -11,7 +16,11 @@ puts "\nWelcome to Soapbox, " + username + "!"
 # 6. Start over at step 2.
 while true
   # 2. Ask for the body of a Bubble
-  puts "\nEnter text for your Bubble or 'exit':"
+  puts """\nStart typing to squeak your next Bubble
+  -type 'history' for past squeaks
+  -type 'exit' to quit
+  """
+  puts "#{username} squeaks:"
   input = gets.chomp
   bubble_text = input
   bubble_time = Time.now #later, figure out how to format time
@@ -21,12 +30,7 @@ while true
     # ^^^ test for user input coming through - it does!
     # ^^^ But it's not yet a Bubble itself - just a bunch of strings
 
-  if input == "exit"
-    puts "\nThanks for using SoapBox!"
-    exit
-
-  else
-
+  if input != "exit" && input != "history"
     single_bubble = {username: current_user, body: bubble_text, created_at: bubble_time}
     # ^^^ now user input is in a hash
 
@@ -47,11 +51,16 @@ while true
     # puts "all_bubbles contents - class?"
     # puts all_bubbles.first.class # <-- Bubble
 
+  elsif input == "exit"
+    puts "\nThanks for using SoapBox!"
+    exit
+
+  elsif input == "history"
     # 5. Print out the details of each bubble.
-    puts "\n#{username}'s Soapbox history"
+    puts "\n#{username}'s Soapbox history:"
     all_bubbles.each do |b|
       puts
-      puts "\t#{b.username} squeaks:\n\t'#{b.body}'"
+      puts "\t#{b.username}: '#{b.body}'"
       puts "\tsqueaked at: #{b.created_at}" #reformat to shorter time display?
     end
   end
