@@ -1,12 +1,12 @@
 class Bubble
-  attr_accessor :username
-                :body
+  attr_accessor :username,
+                :body,
                 :created_at
 
   def initialize (b)
     @username = b[:username]
     @body = b[:body]
-    @created_at = Time.now #I suspect this should be time.now, now b[:created_at] -- but switch back if needed
+    @created_at = Time.now #I suspect this should be time.now, not b[:created_at] -- but switch back if needed
   end
 end
 
