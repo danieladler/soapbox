@@ -36,9 +36,7 @@ while true
 
     bubble_instance = Bubble.new(single_bubble)
 
-    file =  File.open("/Users/danieladler/Dropbox/SoapBox/#{single_bubble[:body]}.txt","w")
-    file.write "#{single_bubble[:username]}"
-    file.close
+    bubble_instance.save_file
 
     all_bubbles << bubble_instance
     # keeping array so that it also populates array for 'history' function

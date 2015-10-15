@@ -10,8 +10,8 @@ class Bubble
     @created_at = Time.now.strftime("%A, %d %b %Y %l:%M %p")
   end
 
-  def save_file(b) #argument could be filepath of where file should be saved
-    @file = File.open(@body.txt, "w")
+  def save_file  File.open("/Users/danieladler/Programming/Code_Builders/ruby_practice/projects/soapbox/bubble_test/#{@body}", "w") do |file|
+      file << "#{@username}"
+    end
   end
-
 end
