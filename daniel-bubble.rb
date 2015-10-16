@@ -10,12 +10,23 @@ class Bubble
   attr_accessor :username,
                 :body,
                 :created_at,
-                :file #new
+                :file,
+                :birthtime
 
   def initialize (b)
     @username = b[:username]
     @body = b[:body]
-    @created_at = Time.now.strftime("%A, %d %b %Y %l:%M %p")
+    @created_at = if b[:created_at] != nil
+        b[:created_at]
+      else
+        Time.now
+      end
+  end
+
+  def format
+    puts "\t#{@username.bold.light_yellow}:" + "\t" + "#{@body}"
+    puts "\tsqueaked at: ".bold + "\t" + "#{@created_at.strftime("%A, %d %b %Y %l:%M %p")}"
+    puts "\t"+"_ _".bold*15
   end
 
   def save_file
