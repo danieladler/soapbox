@@ -1,4 +1,6 @@
 # TO DO:
+# *~ add 'path' class method - refer to filepath within here
+# *~ add welcome note as a class method?
 # *~ create class method for Bubbles -- read whole feed. include refresh inside?
     # def self.read_all
     #  Dir.glob("*")
@@ -14,8 +16,8 @@ class Bubble
                 :birthtime
 
   def initialize (b)
-    @username = b[:username]
-    @body = b[:body]
+    @username   = b[:username]
+    @body       = b[:body]
     @created_at = if b[:created_at] != nil
         b[:created_at]
       else
@@ -23,10 +25,21 @@ class Bubble
       end
   end
 
+  # def format  #Original format!
+  #   puts "\t#{@username.bold.light_yellow}:" + "\t" + "#{@body}"
+  #   puts "\tsqueaked at: ".bold + "\t" + "#{@created_at.strftime("%A, %d %b %Y %l:%M %p")}"
+  #   puts "\t"+"_ _".bold*15
+  #   puts
+  #   #put 'puts' back in front of these if need to revert!
+  # end
+
   def format
-    puts "\t#{@username.bold.light_yellow}:" + "\t" + "#{@body}"
-    puts "\tsqueaked at: ".bold + "\t" + "#{@created_at.strftime("%A, %d %b %Y %l:%M %p")}"
-    puts "\t"+"_ _".bold*15
+    line_width = 40
+    puts @username.bold.light_yellow + ":" + @body.center(line_width)
+    puts "squeaked at: ".bold + @created_at.strftime("%A, %d %b %Y %l:%M %p").center(line_width)
+    puts "_ _".bold*15
+    puts
+    #put 'puts' back in front of these if need to revert!
   end
 
   def save_file
