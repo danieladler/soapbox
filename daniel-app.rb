@@ -1,11 +1,3 @@
-# TO-DO:
-# * look for things that can be outsourced to Bubble class file
-# * improve feed formatting
-# * improve other formatting across app (define line_width?)
-
-#commit notes:
-# *
-
 require_relative 'daniel-bubble'
 require 'colorize'
 
@@ -27,7 +19,7 @@ username = File.read("./username.soapbox")
     puts "Welcome back to " + "SoapBox".on_light_blue + ", " + username.light_yellow.bold + "!\n\n"
   end
 
-  puts "If you are not #{username}, type 'change' to log in as a different user"
+  puts "If you are not " + username.light_yellow.bold + ", type 'change' to log in as a different user. \nOtherwise, press " + "return".bold.light_blue + " for main menu."
   input = gets.chomp
     if input.downcase == 'change'
       puts "Please enter username:"
@@ -84,7 +76,7 @@ while true
 
     end
 
-    puts "^^^".blink + " Above are the 10 most recent Bubbles ".light_green + "^^^\n".blink
+    puts "^^^".blink + " Scroll up to view 10 most recent Bubbles ".light_green + "^^^\n".blink
 
   elsif input.downcase == 'history'
 
@@ -106,7 +98,7 @@ while true
 
     end
 
-    puts "^^^ ".blink + "Above are all bubbles across Soapbox ".light_green + "^^^\n".blink
+    puts "^^^ ".blink + "Scroll up to view all bubbles across Soapbox ".light_green + "^^^\n".blink
 
   elsif input.downcase == 'exit'
 
