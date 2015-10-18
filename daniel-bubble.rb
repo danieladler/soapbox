@@ -25,21 +25,12 @@ class Bubble
       end
   end
 
-  # def format  #Original format!
-  #   puts "\t#{@username.bold.light_yellow}:" + "\t" + "#{@body}"
-  #   puts "\tsqueaked at: ".bold + "\t" + "#{@created_at.strftime("%A, %d %b %Y %l:%M %p")}"
-  #   puts "\t"+"_ _".bold*15
-  #   puts
-  #   #put 'puts' back in front of these if need to revert!
-  # end
-
   def format
     line_width = 40
     puts @username.bold.light_yellow + ":" + @body.center(line_width)
     puts "squeaked at: ".bold + @created_at.strftime("%A, %d %b %Y %l:%M %p").center(line_width)
     puts "_ _".bold*15
     puts
-    #put 'puts' back in front of these if need to revert!
   end
 
   def save_file
@@ -48,10 +39,10 @@ class Bubble
       file << "#{@username}"
     end
   end
+
 end
 
 #write folder for finished app: /Users/danieladler/Dropbox/SoapBox/
-
 
 #write folder for testing
 # /Users/danieladler/Programming/Code_Builders/ruby_practice/projects/soapbox/bubble_test/
